@@ -22,11 +22,11 @@ $$P({x_1} < x < {x_2})=\int_{x_1}^{x_2} f(x) dx $$
 
 (Figure 1: Monte Carlo method applied to approximating the value of pi)
 
-A important step of every Monte Carlo simulation is random sampling, the process of getting a random value for a variable given its pdf. In computation, this is done by first picking a random uniformly distributed number r between 0 and 1 (see [Wikipedia](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) for which the pdf is simply f(x)=1 when 0<x<1.
+A important step of every Monte Carlo simulation is random sampling, the process of getting a random value for a variable given its pdf. In computation, this is done by first picking a random uniformly distributed number r between 0 and 1 (see [Wikipedia](https://en.wikipedia.org/wiki/Pseudorandom_number_generator)) for which the pdf is simply $f(r)=1$ when $0<r<1$.
 
-In the example of a dice roll, we could say that the roll result is 1 if we pick a random nuber r for which $0<r\leq 1/6$, 2 if $1/6<r\leq 2/6$ and so on. To get a random number for an arbitrary pdf, we can use the fact that these probability densities are all normalized: $\int_\mathbb{R} f(x) = 1$. So, we can write
+In the example of a dice roll, we could say that the roll result is 1 if we pick a random nuber r for which $0<r \leq 1/6$, 2 if $1/6<r \leq 2/6$ and so on. To get a random number for an arbitrary pdf, we can use the fact that these probability densities are all normalized: $\int_{-\infty}^{+\infty} f(x) = 1$. So, we can write
 
-$$ \int_{0}^r 1 dx = \int_{-\infty}^x f(x')dx'=F(x) $$
+$$ \int_{0}^r 1 dr' = \int_{-\infty}^x f(x')dx'=F(x) $$
 
 where F(x) is the cumulative distribution function (cdf).
 
