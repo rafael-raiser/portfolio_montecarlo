@@ -14,9 +14,9 @@ A simple example is shooting dice. After a sufficient large number of rolls, the
 
 $$P(x=1)=...=p(x=6)=1/6 $$
 
-The dice outcome is an example of discrete probability. This can be extended to the a continuous variable (x) by defining the probability density function f(x) (pdf); then, the probability of finding an outcome in the interval [x_1,x_2] is given by an integral
+The dice outcome is an example of discrete probability. This can be extended to the a continuous variable (x) by defining the probability density function f(x) (pdf); then, the probability of finding an outcome in the interval $[x_1 , x_2]$ is given by an integral
 
-$$ P(x_1 < x < x_2)=\int_{x_1}^{x_2} f(x) dx $$
+$$P({x_1} < x < {x_2})=\int_{x_1}^{x_2} f(x) dx $$
 
 ![figure1]()
 
@@ -26,7 +26,15 @@ A important step of every Monte Carlo simulation is random sampling, the process
 
 In the example of a dice roll, we could say that the roll result is 1 if we pick a random nuber r for which $0<r\leq 1/6$, 2 if $1/6<r\leq 2/6$ and so on. To get a random number for an arbitrary pdf, we can use the fact that these probability densities are all normalized: $\int_\mathbb{R} f(x) = 1$. So, we can write
 
-$$ \int_{0}^r 1 dx = \int_{-\infty}^x f(x')dx' $$
+$$ \int_{0}^r 1 dx = \int_{-\infty}^x f(x')dx'=F(x) $$
+
+where F(x) is the cumulative distribution function (cdf).
+
+Therefore the sampling from a given pdf can be done by calculating its inverse and applying it to a uniform random number:
+
+$$ F(x)=r \implies x=F^{-1}(r) $$
+
+
 
 ## Stocks
 
