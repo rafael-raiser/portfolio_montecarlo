@@ -39,7 +39,28 @@ Therefore the sampling from a given pdf can be done by calculating its inverse a
 $$ x=F^{-1}(r) $$
 
 
-
 ## Stocks
 
+Let's now apply Monte Carlo simulation and the concept of Markov chains in the finance of stocks. A stock consist of all the shares by which ownership of a corporation or company is divided. According to the weak form efficiency, the past movements, volume and earnings data don't affect the future price of a stock. This characterizes stock evolution as a Markov process: all the information needed to predict its value is the present one.
+
+Assuming a risk free scenario, it's common to model stocks by using geometric brownian motion which states that the logarithm of the value follows a brownian motion (or a Wiener process; see [Wikipedia](https://en.wikipedia.org/wiki/Wiener_process)). This means that the differential variation of stock (dS) can be related to the diferential time variation (dt) as
+
+$$dS = S(\mu dt + \sigma \epsilon \sqrt{dt}) $$
+
+where $\epsilon$ is a normally distributed random variable with mean 0 and variance 1, $\mu$ is the $\sigma$ is its standard deviation. It can be shown (see [here](https://medium.com/@polanitzer/forward-looking-monte-carlo-simulation-predict-the-future-value-of-equity-using-the-lognormal-f54320f9c230)) that this leads the stock price 
+
+
+
+
+
+## The dataset
+
+https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/AAPL_stock.png
+
 ## Results
+
+https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/returns_hist.png
+https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/log-returns_hist.png
+
+https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/results_hist.png
+
