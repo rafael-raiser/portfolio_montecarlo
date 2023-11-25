@@ -38,29 +38,55 @@ Therefore the sampling from a given pdf can be done by calculating its inverse a
 
 $$ x=F^{-1}(r) $$
 
-
 ## Stocks
 
 Let's now apply Monte Carlo simulation and the concept of Markov chains in the finance of stocks. A stock consist of all the shares by which ownership of a corporation or company is divided. According to the weak form efficiency, the past movements, volume and earnings data don't affect the future price of a stock. This characterizes stock evolution as a Markov process: all the information needed to predict its value is the present one.
 
-Assuming a risk free scenario, it's common to model stocks by using geometric brownian motion which states that the logarithm of the value follows a brownian motion (or a Wiener process; see [Wikipedia](https://en.wikipedia.org/wiki/Wiener_process)). This means that the differential variation of stock (dS) can be related to the diferential time variation (dt) as
+In the study of stock, it's common to calculate the daily return, definided as the percentual change of the value from one day to the next:
+
+$$ return = \frac{S(t)-S(t-1)}{S(t-1}} $$
+
+The mean $\boldsymbol{\mu}$ and standard deviation $\boldsymbol{\sigma}$ of the returns then constitute an important source of information about the growing trend and the volatility of the stock.
+
+Assuming a risk free scenario, it's common to model stocks by using geometric brownian motion, which states that *the logarithm of the stock follows a brownian motion* (Figure 2) (or a Wiener process; see [Wikipedia](https://en.wikipedia.org/wiki/Wiener_process)). This means that the differential variation of stock (dS) can be related to the diferential time variation (dt) as
 
 $$dS = S(\mu dt + \sigma \epsilon \sqrt{dt}) $$
 
-where $\epsilon$ is a normally distributed random variable with mean 0 and variance 1, $\mu$ is the $\sigma$ is its standard deviation. It can be shown (see [here](https://medium.com/@polanitzer/forward-looking-monte-carlo-simulation-predict-the-future-value-of-equity-using-the-lognormal-f54320f9c230)) that this leads the stock price 
+where $\epsilon=N(0,1)$ is a normally distributed random variable with mean 0 and variance 1. It can be shown (see [here](https://medium.com/@polanitzer/forward-looking-monte-carlo-simulation-predict-the-future-value-of-equity-using-the-lognormal-f54320f9c230)) that this leads the Stock price to be modeled by
 
+$$S(t)=S(0)\exp{(at+b\sqrt{dt})} $$
 
+where $a=\mu-\sigma^2/2$ while $b=\sigma \epsilon$.
 
+![figure2](https://hkilter.com/images/9/99/Brownian-motion.gif)
 
+(Figure 2: Brownian motion describes the random motion of a gas particle)
+
+By repeatedly picking normal random numbers and applying them to the model we can then predict, day by day, the behaviour of stock. The trend and volatility ($\mu$ and $\sigma$) of the data can be calculated from the historical data available online.
 
 ## The dataset
 
-https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/AAPL_stock.png
+We use in this project Apple's historical data ([Yahoo](https://finance.yahoo.com/quote/AAPL/)) for 5 years, starting from Nov 23, 2018 to Nov 22, 2023 (Figure 3).
+
+![figure3](https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/AAPL_stock.png)
+
+(Figure 3: Apple's historical data)
 
 ## Results
 
-https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/returns_hist.png
-https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/log-returns_hist.png
+The first step of the analysis is determining the mean and standard deviation of the returns. We calculate $\mu=0.14\% day^{-1}$ and $\sigma=2.06\% day^{-1/2}$. Figure 4 shows a histogram of the returns.
 
-https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/results_hist.png
+![figure4](https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/returns_hist.png)
+
+(Figure 4: Histogram of the returns)
+
+We then perform Monte Carlo simulation to evaluate the stock after T=252 days from the last value of $S_0=191.31$ using 100,000 repetitions. The result is plotted in figure 5.
+
+![figure5](https://github.com/rafael-raiser/portfolio_montecarlo/blob/main/results_hist.png)
+
+(Figure 5: Monte Carlo results)
+
+The resulting distribution obtained is the so called log-normal distrubution, a pdf for which the logarithm of its values are normally distributed.
+
+In a deterministic world where there's no volatility and the stock follows $S(t)=S(0)\exp{(\mu t)}$, the stock after 252 days would be **272.18**. This value is close to the mean of the Monte Carlo results. **272.39**, whose standard deviation is **91.38**.
 
