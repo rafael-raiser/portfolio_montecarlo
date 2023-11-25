@@ -22,7 +22,7 @@ Another example of application of Monte Carlo method is approximating the value 
 
 $$ \frac{N_{in}}{N}=\frac{A_C}{A_S}=\frac{\pi}{4} $$
 
-![figure1](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Pi_monte_carlo_all.gif/800px-Pi_monte_carlo_all.gif)
+![figure1](https://felixdmr.com/post-assets/2020-09-20-pi-from-monte-carlo/monte-carlo-pi.gif)
 
 (Figure 1: Monte Carlo method applied to approximating the value of pi)
 
@@ -44,7 +44,7 @@ Let's now apply Monte Carlo simulation and the concept of Markov chains in the f
 
 In the study of stock, it's common to calculate the daily return, definided as the percentual change of the value from one day to the next:
 
-$$ return = \frac{S(t)-S(t-1)}{S(t-1}} $$
+$$return=\frac{S_t-S_{t-1}}{S_{t-1}}$$
 
 The mean $\boldsymbol{\mu}$ and standard deviation $\boldsymbol{\sigma}$ of the returns then constitute an important source of information about the growing trend and the volatility of the stock.
 
