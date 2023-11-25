@@ -54,7 +54,7 @@ $$dS = S(\mu dt + \sigma \epsilon \sqrt{dt}) $$
 
 where $\epsilon=N(0,1)$ is a normally distributed random variable with mean 0 and variance 1. It can be shown (see [here](https://medium.com/@polanitzer/forward-looking-monte-carlo-simulation-predict-the-future-value-of-equity-using-the-lognormal-f54320f9c230)) that this leads the Stock price to be modeled by
 
-$$S(t)=S(0)\exp{(at+b\sqrt{dt})} $$
+$$S(t)=S(0)\exp{(at+b\sqrt{t})} $$
 
 where $a=\mu-\sigma^2/2$ while $b=\sigma \epsilon$.
 
